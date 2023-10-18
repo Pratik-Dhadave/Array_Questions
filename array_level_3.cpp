@@ -109,6 +109,22 @@ void printArrayReversedDiagonal(int brr[][4], int rowD, int colD ){
         cout<<brr[i][i]<<" ";
     }
 }
+
+void printTranspose(int brr[][4], int rowD ,int colD){
+    for(int i=0; i<colD; i++){
+        for(int j=0; j<=i; j++){
+            swap(brr[j][i], brr[i][j]);
+        }
+    }
+
+    for(int i=0; i<colD; i++){
+        for(int j=0; j<rowD; j++){
+            cout<<brr[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+
+}
 int main(){
     // int arr[] = {2,3,4,5,6};
     // int size = 5;
@@ -143,11 +159,14 @@ int main(){
     // maxNO(arr,row,col);
     // minNO(arr,row,col);
 
-    printSumRowwise(arr,row ,col);
-    printSumColwise(arr,row,col);
-    printSumDiagonal(brr,rowD,colD);
+    // printSumRowwise(arr,row ,col);
+    // printSumColwise(arr,row,col);
+    // printSumDiagonal(brr,rowD,colD);
 
-    printArrayDiagonal(brr,rowD,colD);
-    printArrayReversedDiagonal(brr,rowD,colD);
+    // printArrayDiagonal(brr,rowD,colD);
+    // printArrayReversedDiagonal(brr,rowD,colD);
+
+
+    printTranspose(brr,rowD,colD);
 
 }
