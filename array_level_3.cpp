@@ -14,7 +14,7 @@ void leftShift(int arr[], int size){
 }
 void rightShift(int arr[], int size){
     int temp = arr[size-1];
-    for(int i=size-1; i>0; i--){
+    for(int i=size-1; i>0; i-- ){
         arr[i] = arr[i-1];
     }
     arr[0]=temp;
@@ -125,6 +125,100 @@ void printTranspose(int brr[][4], int rowD ,int colD){
     }
 
 }
+
+void printNo(int arr1[], int n){
+    int j=0;
+    for(int i=0; i<n; i++){
+        if(arr1[i]<0){
+            swap(arr1[i],arr1[j]);
+            j++;
+        }
+    }
+    for(int i=0; i<n; i++){
+        cout<<arr1[i]<<" ";
+    }
+}
+
+
+void sort0s1s2s(int arr[],int n){
+    // int zeroCount=0;
+    // int oneCount=0;
+    // int twoCount=0;
+
+    // for(int i=0; i<n; i++){
+    //     if(arr[i]==0)
+    //     zeroCount++;
+    //     else if(arr[i]==1)
+    //     oneCount++;
+    //     else if(arr[i]==2)
+    //     twoCount++;
+    // }
+    // int index =0;
+    // while(zeroCount--){
+    //     arr[index]=0;
+    //     index++;
+    // }
+    // while(oneCount--){
+    //     arr[index]=1;
+    //     index++;
+    // }
+    // while(twoCount--){
+    //     arr[index]=2;
+    //     index++;
+    // }
+
+    // for(int i=0; i<n; i++){
+    //     cout<<arr[i]<<"  ";
+    // }
+
+
+
+
+    // 2nd solution using two pointers
+    int index=0;
+    int left=0; 
+    int right =n-1;
+    while(index<=right){
+        if(arr[index]==0){
+            swap(arr[index], arr[left]);
+            left++;
+            index++;
+        }else if(arr[index]==2){
+            swap(arr[index],arr[right]);
+            right--;
+        }else{
+            index++;
+        }
+    }
+
+    for(int i=0; i<n; i++){
+        cout<<arr[i]<<"   ";
+    }
+}
+
+
+void arrayRotate(int arr[], int n,int k){
+    int ans[n];
+    for(int index=0; index<n; index++){
+        int newIndex = (index+k)%n;
+        ans[newIndex]= arr[index];
+    }
+    arr=ans;
+    for(int i=0; i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+}
+
+void noMissing(int arr[], int n){
+    int sum=0; 
+    for(int i=0; i<n; i++){
+        sum=sum+arr[i];
+    }
+    int totalSum = ((n)*(n+1))/2;
+    int ans=totalSum-sum;
+
+    cout<<endl<<"Missing Number is:"<<ans;
+}
 int main(){
     // int arr[] = {2,3,4,5,6};
     // int size = 5;
@@ -167,6 +261,33 @@ int main(){
     // printArrayReversedDiagonal(brr,rowD,colD);
 
 
-    printTranspose(brr,rowD,colD);
+    // printTranspose(brr,rowD,colD);
+
+
+    //practice problem 
+
+    //1.shift -ve nos to left & +ve nos to right
+    // int arr1[]={23,-7,12,-10,-11,40,60};
+    // int n=7;
+    // printNo(arr1,n);
+    
+
+    //2.Sort 0,1,2
+    // int arr1[]= {1,2,0,1,1,0,2};
+    // int n = 7;
+    // sort0s1s2s(arr1,n);
+
+    //3.rotate array k=2
+
+    // int arr1[]={10,20,30,40,50,60};
+    // int n=6;
+    // int k=3;
+    // arrayRotate(arr1,n,k);
+
+    //4.Missing number
+    int arr1[]={3,0,1};
+    int n=3;
+    noMissing(arr1,n);
+    return 0;
 
 }
